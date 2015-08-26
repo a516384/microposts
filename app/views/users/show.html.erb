@@ -1,10 +1,26 @@
-<h1>
-  <%= gravatar_for @user %>
-</h1>
-  <%= @user.name %><br>
-  Email:<%= @user.email %><br>
-  Profile:<%= @user.profile %><br>
-  Local:<%= @user.local %><br>
+
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+        Email:<%= @user.email %><br>
+        Profile:<%= @user.profile %><br>
+        Local:<%= @user.local %><br>
   
   
 <%= link_to 'Edit Profile', edit_user_path(@user) %>
+
+      </h1>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <% if @user.microposts.any? %>
+      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
+    <% end %>
+  </div>
+</div>
